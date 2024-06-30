@@ -1,10 +1,16 @@
 import 'package:desh_mart/configs/Theme.dart';
+import 'package:desh_mart/provider/drawerProvider.dart';
 import 'package:desh_mart/view/AuthView.dart';
 import 'package:desh_mart/view/HomePage.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MultiProvider(providers: [
+    ChangeNotifierProvider(
+      create: (_) => DrawerProvider(),
+    )
+  ], child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -16,8 +22,9 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Deshi Mart',
       theme: lightTheme,
+      themeMode: ThemeMode.dark,
+      darkTheme: darkTheme,
       home: const HomePageView(),
     );
   }
 }
-

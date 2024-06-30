@@ -1,5 +1,5 @@
 import 'package:desh_mart/pages/mobile/HomePage/HomePage.dart';
-import 'package:desh_mart/pages/web/HomePage.dart';
+import 'package:desh_mart/pages/web/HomePage/HomePage.dart';
 import 'package:desh_mart/widgets/ResponsiveLayout.dart';
 import 'package:flutter/cupertino.dart';
 
