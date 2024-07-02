@@ -1,3 +1,4 @@
+import 'package:desh_mart/widgets/ResponsiveLayout.dart';
 import 'package:flutter/material.dart';
 
 class MyAppBar extends StatelessWidget {
@@ -7,6 +8,7 @@ class MyAppBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDesktop = Responsive.isDesktop(context);
     return Container(
       height: 70,
       decoration: BoxDecoration(
@@ -14,7 +16,15 @@ class MyAppBar extends StatelessWidget {
       ),
       child: Row(
         children: [
-          const Spacer(),
+          const SizedBox(width: 10),
+          if (!isDesktop)
+            IconButton(
+                onPressed: () {
+                  Scaffold.of(context).openDrawer();
+                },
+                icon: const Icon(Icons.menu)),
+          const SizedBox(width: 10),
+          if (isDesktop) const Spacer(),
           Expanded(
             child: TextFormField(
               decoration: InputDecoration(

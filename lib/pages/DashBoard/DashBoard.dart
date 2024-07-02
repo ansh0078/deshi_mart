@@ -1,4 +1,3 @@
-import 'package:desh_mart/widgets/OurPage.dart';
 import 'package:flutter/material.dart';
 
 class DashBoardPage extends StatelessWidget {
@@ -6,17 +5,23 @@ class DashBoardPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return OurPage(
-      title: "DashBoard",
-      child: Column(
-        children: [
-          Row(
-            children: [
-              Text("Ansh ")
-            ],
-          )
-        ],
-      ),
+    return Column(
+      children: [
+        Row(
+          children: [
+            Container(
+              width: 7,
+              height: 40,
+              color: Theme.of(context).colorScheme.primary,
+            ),
+            const SizedBox(width: 10),
+            Text(
+              "DashBoard",
+              style: Theme.of(context).textTheme.bodyMedium,
+            )
+          ],
+        ),
+      ],
     );
   }
 }
