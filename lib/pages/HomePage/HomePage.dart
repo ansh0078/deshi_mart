@@ -1,8 +1,9 @@
-import 'package:desh_mart/pages/DashBoard/DashBoard.dart';
+import 'package:desh_mart/provider/drawerProvider.dart';
 import 'package:desh_mart/widgets/AppBar.dart';
 import 'package:desh_mart/widgets/MyDrawer.dart';
 import 'package:desh_mart/widgets/ResponsiveLayout.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -11,18 +12,20 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     final isDesktop = Responsive.isDesktop(context);
     return Scaffold(
-      drawer: isDesktop ? null : MyDrawer(),
+      drawer: isDesktop ? null : const MyDrawer(),
       body: SafeArea(
         child: Row(
           children: [
             if (isDesktop) const Expanded(child: MyDrawer()),
-            const Expanded(
+            Expanded(
               flex: 6,
               child: Column(
                 children: [
-                  MyAppBar(),
-                  SizedBox(height: 20),
-                  DashBoardPage(),
+                  const MyAppBar(),
+                  const SizedBox(height: 20),
+                  Consumer<DrawerProvider>(
+                    builder: (context, value, child) => value.pages[value.selectedPageIndex],
+                  )
                 ],
               ),
             ),
