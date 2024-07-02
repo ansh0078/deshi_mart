@@ -46,37 +46,47 @@ var lightTheme = ThemeData(
 var darkTheme = ThemeData(
   brightness: Brightness.dark,
   colorScheme: const ColorScheme.dark(
-    surface: darkBgColor,
+    background: darkBgColor,
     primary: darkPrimaryColor,
-    onSurface: darkOnBackground,
-    primaryContainer: darkPrimaryColor,
+    onBackground: darkOnBackground,
+    primaryContainer: darkPrimaryContaainer,
     onPrimaryContainer: darkOnPrimaryContainerColor,
     secondaryContainer: darkSecondaryColor,
+  ),
+  drawerTheme: const DrawerThemeData(
+    backgroundColor: darkPrimaryContaainer,
+    surfaceTintColor: darkPrimaryContaainer,
   ),
   textTheme: const TextTheme(
     headlineMedium: TextStyle(
       fontFamily: "Popins",
       fontSize: 25,
       fontWeight: FontWeight.w500,
-      color: onBackgroundColor,
+      color: darkOnBackground,
     ),
     headlineSmall: TextStyle(
       fontFamily: "Popins",
       fontSize: 20,
       fontWeight: FontWeight.w500,
-      color: onBackgroundColor,
+      color: darkOnBackground,
     ),
     bodyMedium: TextStyle(
       fontFamily: "Popins",
       fontSize: 15,
       fontWeight: FontWeight.w500,
-      color: onBackgroundColor,
+      color: darkOnBackground,
     ),
     bodySmall: TextStyle(
       fontFamily: "Popins",
       fontSize: 11,
       fontWeight: FontWeight.w500,
-      color: onBackgroundColor,
+      color: darkOnBackground,
+    ),
+    labelLarge: TextStyle(
+      fontFamily: "Popins",
+      fontSize: 15,
+      fontWeight: FontWeight.w400,
+      color: onPrimaryContainerColor,
     ),
     labelMedium: TextStyle(
       fontFamily: "Popins",

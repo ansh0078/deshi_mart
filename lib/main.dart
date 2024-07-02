@@ -1,6 +1,5 @@
 import 'package:desh_mart/configs/Theme.dart';
 import 'package:desh_mart/provider/drawerProvider.dart';
-import 'package:desh_mart/view/AuthView.dart';
 import 'package:desh_mart/view/HomePage.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
