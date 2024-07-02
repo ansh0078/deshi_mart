@@ -1,18 +1,8 @@
 import 'package:flutter/material.dart';
 
-class ResponsiveLayout extends StatelessWidget {
-  final Widget mobile;
-  final Widget desktop;
-  const ResponsiveLayout({super.key, required this.mobile, required this.desktop});
+class Responsive {
+  static bool isMobile(BuildContext context) => MediaQuery.of(context).size.width < 850;
+  static bool isTable(BuildContext context) => MediaQuery.of(context).size.width < 1100 && MediaQuery.of(context).size.width >= 1100;
+  static bool isWeb(BuildContext context) => MediaQuery.of(context).size.width >= 1100;
 
-  @override
-  Widget build(BuildContext context) {
-    return LayoutBuilder(builder: (context, constraints) {
-      if (constraints.maxWidth < 600) {
-        return mobile;
-      } else {
-        return desktop;
-      }
-    });
-  }
 }

@@ -1,6 +1,6 @@
 import 'package:desh_mart/configs/AssetsPath.dart';
+import 'package:desh_mart/pages/DashBoard/DashBoard.dart';
 import 'package:desh_mart/provider/drawerProvider.dart';
-import 'package:desh_mart/view/dashBoardView.dart';
 import 'package:desh_mart/widgets/AppBar.dart';
 import 'package:desh_mart/widgets/DrawerMenu.dart';
 import 'package:flutter/material.dart';
@@ -88,7 +88,10 @@ class WebHomePage extends StatelessWidget {
                 children: [
                   MyAppBar(),
                   SizedBox(height: 20),
-                  DashBoardView(),
+                  Padding(
+                    padding: EdgeInsets.all(10),
+                    child: WebDashBoard(),
+                  ),
                 ],
               ),
             ),
