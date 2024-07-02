@@ -7,8 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 
-class WebHomePage extends StatelessWidget {
-  const WebHomePage({super.key});
+class HomePage extends StatelessWidget {
+  const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -88,10 +88,7 @@ class WebHomePage extends StatelessWidget {
                 children: [
                   MyAppBar(),
                   SizedBox(height: 20),
-                  Padding(
-                    padding: EdgeInsets.all(10),
-                    child: WebDashBoard(),
-                  ),
+                  DashBoardPage(),
                 ],
               ),
             ),
