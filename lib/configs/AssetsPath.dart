@@ -2,6 +2,7 @@ class IconsAssets {
   static String basePath = "assets/icons/";
 
   static String appIcon = "${basePath}appIcon.svg";
+  static String appIconDark = "${basePath}appIconDark.svg";
   static String bell = "${basePath}bell.svg";
   static String bag = "${basePath}appIcon.svg"; //------
   static String car = "${basePath}car.svg";

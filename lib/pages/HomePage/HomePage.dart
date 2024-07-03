@@ -23,8 +23,11 @@ class HomePage extends StatelessWidget {
                 children: [
                   const MyAppBar(),
                   const SizedBox(height: 20),
-                  Consumer<DrawerProvider>(
-                    builder: (context, value, child) => value.pages[value.selectedPageIndex],
+                  Padding(
+                    padding: const EdgeInsets.all(15),
+                    child: Consumer<DrawerProvider>(
+                      builder: (context, value, child) => value.pages[value.selectedPageIndex],
+                    ),
                   )
                 ],
               ),

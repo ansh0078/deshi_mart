@@ -20,7 +20,7 @@ class MyDrawer extends StatelessWidget {
             children: [
               DrawerHeader(
                 child: SvgPicture.asset(
-                  IconsAssets.appIcon,
+                  IconsAssets.appIconDark,
                 ),
               ),
               MyDrawerMenu(
