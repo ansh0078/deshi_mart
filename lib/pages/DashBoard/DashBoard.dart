@@ -1,8 +1,6 @@
 import 'package:desh_mart/configs/AssetsPath.dart';
-import 'package:desh_mart/pages/DashBoard/widgets/Order.dart';
 import 'package:desh_mart/pages/DashBoard/widgets/static.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 
 class DashBoardPage extends StatelessWidget {
   const DashBoardPage({super.key});
