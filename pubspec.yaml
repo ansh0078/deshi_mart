@@ -18,7 +18,7 @@ dependencies:
   cupertino_icons: ^1.0.6
   flutter_svg: ^2.0.10+1
   provider: ^6.1.2
-  syncfusion_flutter_datagrid: ^26.1.40
+  # syncfusion_flutter_datagrid: ^26.1.40
   
 dev_dependencies:
   flutter_test:

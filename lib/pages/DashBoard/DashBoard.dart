@@ -1,4 +1,5 @@
 import 'package:desh_mart/configs/AssetsPath.dart';
+import 'package:desh_mart/pages/DashBoard/widgets/Order.dart';
 import 'package:desh_mart/pages/DashBoard/widgets/static.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -47,7 +48,21 @@ class DashBoardPage extends StatelessWidget {
           ],
         ),
         const SizedBox(height: 30),
-        Row(children: statics.map((e) => Expanded(child: HomeStatic(label: e["label"]!, value: e["value"]!, icon: e["icon"]!))).toList())
+        Row(
+          children: statics
+              .map(
+                (e) => Expanded(
+                  child: HomeStatic(
+                    label: e["label"]!,
+                    value: e["value"]!,
+                    icon: e["icon"]!,
+                  ),
+                ),
+              )
+              .toList(),
+        ),
+        const SizedBox(height: 30),
+        // OrderHistory(),
       ],
     );
   }
