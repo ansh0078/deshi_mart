@@ -1,3 +1,6 @@
+import 'package:desh_mart/pages/Product/widgets/productTableData.dart';
+import 'package:desh_mart/widgets/myIconButton.dart';
+import 'package:desh_mart/widgets/primaryBtn.dart';
 import 'package:flutter/material.dart';
 
 class ProductPage extends StatelessWidget {
@@ -10,8 +13,8 @@ class ProductPage extends StatelessWidget {
         Row(
           children: [
             Container(
-              width: 7,
-              height: 40,
+              width: 5,
+              height: 30,
               color: Theme.of(context).colorScheme.primary,
             ),
             const SizedBox(width: 10),
@@ -21,6 +24,33 @@ class ProductPage extends StatelessWidget {
             )
           ],
         ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            MyIconButton(
+              icon: Icons.refresh,
+              color: Colors.orange,
+              onTap: () {},
+            ),
+            const SizedBox(width: 10),
+            PrimaryButton(
+              name: "Export",
+              icon: Icons.import_export_sharp,
+              onTap: () {},
+              color: Colors.deepPurple,
+            ),
+            const SizedBox(width: 10),
+            PrimaryButton(
+              name: "Add Product",
+              icon: Icons.add,
+              onTap: () {},
+              color: Theme.of(context).colorScheme.primary,
+            ),
+            const SizedBox(width: 10),
+          ],
+        ),
+        const SizedBox(height: 20),
+        const ProductTableData()
       ],
     );
   }

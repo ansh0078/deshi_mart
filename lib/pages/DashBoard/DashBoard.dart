@@ -1,6 +1,7 @@
 import 'package:desh_mart/configs/AssetsPath.dart';
 import 'package:desh_mart/pages/DashBoard/widgets/Order.dart';
 import 'package:desh_mart/pages/DashBoard/widgets/static.dart';
+import 'package:desh_mart/widgets/myIconButton.dart';
 import 'package:desh_mart/widgets/primaryBtn.dart';
 import 'package:flutter/material.dart';
 
@@ -55,11 +56,11 @@ class DashBoardPage extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
-            // MyIconButton(
-            //   icon: Icons.refresh,
-            //   color: Colors.orange,
-            //   onTap: () {},
-            // ),
+            MyIconButton(
+              icon: Icons.refresh,
+              color: Colors.orange,
+              onTap: () {},
+            ),
             const SizedBox(width: 10),
             PrimaryButton(
               name: "Export",
@@ -77,7 +78,7 @@ class DashBoardPage extends StatelessWidget {
             const SizedBox(width: 10),
           ],
         ),
-        const SizedBox(height: 30),
+        const SizedBox(height: 20),
         Row(
           children: statics
               .map(
@@ -91,7 +92,7 @@ class DashBoardPage extends StatelessWidget {
               )
               .toList(),
         ),
-        const SizedBox(height: 30),
+        const SizedBox(height: 20),
         const OrderHistory(),
       ],
     );

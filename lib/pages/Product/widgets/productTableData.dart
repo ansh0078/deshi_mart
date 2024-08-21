@@ -1,23 +1,25 @@
 import 'package:desh_mart/configs/Colors.dart';
 import 'package:desh_mart/const/data.dart';
 import 'package:desh_mart/models/Product.dart';
+import 'package:desh_mart/widgets/myIconButton.dart';
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_datagrid/datagrid.dart';
 
-class OrderHistory extends StatelessWidget {
-  const OrderHistory({super.key});
+class ProductTableData extends StatelessWidget {
+  const ProductTableData({super.key});
 
   @override
   Widget build(BuildContext context) {
     final productDataSource = ProductDataSource(products);
     return Container(
-      height: MediaQuery.of(context).size.height / 2,
+      height: MediaQuery.of(context).size.height / 1.5,
       padding: const EdgeInsets.all(10),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
         color: Theme.of(context).colorScheme.primaryContainer,
       ),
       child: SfDataGrid(
+        rowHeight: 150,
         allowFiltering: true,
         allowSorting: true,
         headerGridLinesVisibility: GridLinesVisibility.none,
@@ -34,6 +36,13 @@ class OrderHistory extends StatelessWidget {
             allowFiltering: false,
             allowSorting: true,
             width: 150,
+            columnName: "images",
+            label: const Center(child: Text("Images")),
+          ),
+          GridColumn(
+            allowFiltering: false,
+            allowSorting: true,
+            width: 150,
             columnName: "name",
             label: const Center(child: Text("Name")),
           ),
@@ -42,12 +51,6 @@ class OrderHistory extends StatelessWidget {
             width: 150,
             columnName: "sellPrice",
             label: const Center(child: Text("S Price")),
-          ),
-          GridColumn(
-            allowSorting: false,
-            width: 150,
-            columnName: "isActive",
-            label: const Center(child: Text("Active")),
           ),
           GridColumn(
             allowFiltering: false,
@@ -76,10 +79,9 @@ class OrderHistory extends StatelessWidget {
           ),
           GridColumn(
             allowSorting: false,
-            allowFiltering: false,
             width: 150,
-            columnName: "tags",
-            label: const Center(child: Text("Tags")),
+            columnName: "isActive",
+            label: const Center(child: Text("Active")),
           ),
           GridColumn(
             allowSorting: false,
@@ -100,14 +102,14 @@ class ProductDataSource extends DataGridSource {
     dataGridRows = products
         .map((product) => DataGridRow(cells: [
               DataGridCell(columnName: "id", value: product.id),
+              DataGridCell(columnName: "images", value: product.images),
               DataGridCell(columnName: "name", value: product.name),
               DataGridCell(columnName: "sellPrice", value: product.sellPrice),
-              DataGridCell(columnName: "isActive", value: product.isActive),
               DataGridCell(columnName: "stock", value: product.stock),
               DataGridCell(columnName: "supplier", value: product.supplier),
               DataGridCell(columnName: "unit", value: product.unit),
               DataGridCell(columnName: "purchasePrice", value: product.purchasePrice),
-              DataGridCell(columnName: "tags", value: product.tags),
+              DataGridCell(columnName: "isActive", value: product.isActive),
               DataGridCell(columnName: "action", value: product.tags),
             ]))
         .toList();
@@ -120,11 +122,45 @@ class ProductDataSource extends DataGridSource {
     return DataGridRowAdapter(
       cells: row.getCells().map(
         (cell) {
+          if (cell.columnName == "images") {
+            return Container(
+              margin: const EdgeInsets.all(5),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                color: Colors.green.withOpacity(0.2),
+              ),
+            );
+          }
+          if (cell.columnName == "isActive") {
+            return Center(
+              child: Text(
+                cell.value.toString(),
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: cell.value == true ? Colors.green : Colors.red,
+                ),
+              ),
+            );
+          }
           if (cell.columnName == "action") {
-            return Row(
+            return Column(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                IconButton(onPressed: () {}, icon: const Icon(Icons.print)),
-                IconButton(onPressed: () {}, icon: const Icon(Icons.zoom_out_map_rounded)),
+                Row(
+                  children: [
+                    MyIconButton(
+                      icon: Icons.edit,
+                      onTap: () {},
+                      color: Colors.green,
+                    ),
+                    const SizedBox(width: 10),
+                    MyIconButton(
+                      icon: Icons.delete,
+                      onTap: () {},
+                      color: Colors.red,
+                    ),
+                  ],
+                ),
               ],
             );
           } else {
@@ -133,7 +169,7 @@ class ProductDataSource extends DataGridSource {
                 cell.value.toString(),
                 textAlign: TextAlign.center,
                 style: const TextStyle(
-                  fontSize: 12,
+                  fontSize: 15,
                   color: onPrimaryContainerColor,
                 ),
               ),
