@@ -1,4 +1,5 @@
 import 'package:desh_mart/pages/Product/widgets/productDetail.dart';
+import 'package:desh_mart/pages/Product/widgets/productMeta.dart';
 import 'package:flutter/material.dart';
 
 class AddProduct extends StatelessWidget {
@@ -25,7 +26,9 @@ class AddProduct extends StatelessWidget {
           ),
           Expanded(
             child: Column(
-              children: [],
+              children: [
+                ProductMeta()
+              ],
             ),
           ),
         ],
@@ -33,4 +36,3 @@ class AddProduct extends StatelessWidget {
     );
   }
 }
-

@@ -1,18 +1,14 @@
-import 'package:desh_mart/widgets/myDropDownBtn.dart';
 import 'package:flutter/material.dart';
 
-class ProductDetails extends StatelessWidget {
-  const ProductDetails({
+class ProductMeta extends StatelessWidget {
+  const ProductMeta({
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
-    var category = [
-      "Electronics",
-      "Clothes",
-    ];
     return Container(
+      margin: const EdgeInsets.only(top: 10),
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
         color: Theme.of(context).colorScheme.primaryContainer,
@@ -74,10 +70,10 @@ class ProductDetails extends StatelessWidget {
                   ],
                 ),
                 const SizedBox(height: 10),
-                SearchDropDownButton(
-                  hintText: "Category",
-                  items: category,
-                  selectedValue: (value) {},
+                const TextField(
+                  decoration: InputDecoration(
+                    hintText: "Category",
+                  ),
                 ),
                 const SizedBox(height: 10),
                 Row(
