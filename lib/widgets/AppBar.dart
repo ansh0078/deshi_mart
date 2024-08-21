@@ -40,7 +40,7 @@ class MyAppBar extends StatelessWidget {
                     color: Theme.of(context).colorScheme.primary,
                     borderRadius: BorderRadius.circular(10),
                   ),
-                  child: Icon(Icons.search),
+                  child: const Icon(Icons.search),
                 ),
               ),
             ),

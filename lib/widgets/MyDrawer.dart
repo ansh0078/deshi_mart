@@ -7,11 +7,9 @@ import 'package:provider/provider.dart';
 
 class MyDrawer extends StatelessWidget {
   const MyDrawer({super.key});
-
   @override
   Widget build(BuildContext context) {
     final drawerProvider = Provider.of<DrawerProvider>(context, listen: false);
-
     return Consumer<DrawerProvider>(builder: (context, value, child) {
       return Drawer(
         width: 200,

@@ -20,7 +20,9 @@ class MyDrawerMenu extends StatelessWidget {
       onTap: onPress,
       title: Text(
         title,
-        style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: isSelected ? Theme.of(context).colorScheme.onBackground : Theme.of(context).colorScheme.onPrimaryContainer),
+        style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+              color: isSelected ? Theme.of(context).colorScheme.onBackground : Theme.of(context).colorScheme.onPrimaryContainer,
+            ),
       ),
       leading: SvgPicture.asset(
         icon,

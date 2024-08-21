@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 var lightTheme = ThemeData(
   brightness: Brightness.light,
   colorScheme: const ColorScheme.light(
+    surfaceVariant: backgroundColor,
     surface: backgroundColor,
     primary: primaryColor,
     onSurface: onBackgroundColor,
@@ -46,9 +47,10 @@ var lightTheme = ThemeData(
 var darkTheme = ThemeData(
   brightness: Brightness.dark,
   colorScheme: const ColorScheme.dark(
-    background: darkBgColor,
+    surfaceVariant: darkBgColor,
+    surface: darkBgColor,
     primary: darkPrimaryColor,
-    onBackground: darkOnBackground,
+    onSurface: darkOnBackground,
     primaryContainer: darkPrimaryContaainer,
     onPrimaryContainer: darkOnPrimaryContainerColor,
     secondaryContainer: darkSecondaryColor,
