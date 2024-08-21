@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 var lightTheme = ThemeData(
   brightness: Brightness.light,
   colorScheme: const ColorScheme.light(
-    surfaceVariant: backgroundColor,
+    // surfaceVariant: backgroundColor,
     surface: backgroundColor,
     primary: primaryColor,
     onSurface: onBackgroundColor,
@@ -44,10 +44,12 @@ var lightTheme = ThemeData(
     ),
   ),
 );
+
 var darkTheme = ThemeData(
   brightness: Brightness.dark,
+  scaffoldBackgroundColor: darkBgColor,
   colorScheme: const ColorScheme.dark(
-    surfaceVariant: darkBgColor,
+    // surfaceVariant: darkBgColor,
     surface: darkBgColor,
     primary: darkPrimaryColor,
     onSurface: darkOnBackground,
@@ -59,6 +61,16 @@ var darkTheme = ThemeData(
     backgroundColor: darkPrimaryContaainer,
     surfaceTintColor: darkPrimaryContaainer,
   ),
+  inputDecorationTheme: const InputDecorationTheme(
+      border: InputBorder.none,
+      fillColor: darkBgColor,
+      filled: true,
+      hintStyle: TextStyle(
+        fontFamily: "Poppins",
+        fontSize: 15,
+        fontWeight: FontWeight.w400,
+        color: darkOnPrimaryContainerColor,
+      )),
   textTheme: const TextTheme(
     headlineMedium: TextStyle(
       fontFamily: "Popins",

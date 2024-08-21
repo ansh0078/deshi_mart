@@ -6,10 +6,10 @@ const primaryContainerColor = Color(0xffFFFFFF);
 const onPrimaryContainerColor = Color(0xff8E8E8E);
 const onBackgroundColor = Color(0xff333333);
 
+const darkBgColor = Color(0xff18202f);
 const darkPrimaryColor = Color(0xff019934);
-const darkPrimaryContaainer = Color(0xff212332);
-const darkOnPrimaryContainerColor = Color(0xff8E8E8E);
-const darkSecondaryColor = Color(0xff2a203e);
+const darkPrimaryContaainer = Color(0xff1c2537);
 const darkOnBackground = Color(0xffFFFFFF);
+const darkOnPrimaryContainerColor = Color(0xff8E8E8E);
+const darkSecondaryColor = Color(0xff293751);
 
-const darkBgColor = Color(0xff20222C);
