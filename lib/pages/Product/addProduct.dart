@@ -1,5 +1,7 @@
+import 'package:desh_mart/pages/Product/widgets/productAmount.dart';
 import 'package:desh_mart/pages/Product/widgets/productDetail.dart';
 import 'package:desh_mart/pages/Product/widgets/productMeta.dart';
+import 'package:desh_mart/widgets/primaryBtn.dart';
 import 'package:flutter/material.dart';
 
 class AddProduct extends StatelessWidget {
@@ -12,26 +14,53 @@ class AddProduct extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Add Product'),
       ),
-      body: Row(
-        children: [
-          Expanded(
-            child: Padding(
-              padding: const EdgeInsets.all(10),
-              child: Column(
+      body: Padding(
+        padding: const EdgeInsets.all(10),
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              const Row(
                 children: [
-                  ProductDetails()
+                  Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.all(10),
+                      child: Column(
+                        children: [
+                          ProductDetails()
+                        ],
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.all(10),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          ProductMeta()
+                        ],
+                      ),
+                    ),
+                  ),
                 ],
               ),
-            ),
+              const SizedBox(height: 10),
+              const ProductAmount(),
+              const SizedBox(height: 20),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  PrimaryButton(
+                    name: 'Add Product',
+                    icon: Icons.add,
+                    color: Theme.of(context).colorScheme.primary,
+                    onTap: () {},
+                  ),
+                ],
+              ),
+            ],
           ),
-          Expanded(
-            child: Column(
-              children: [
-                ProductMeta()
-              ],
-            ),
-          ),
-        ],
+        ),
       ),
     );
   }

@@ -24,7 +24,7 @@ class ProductDetails extends StatelessWidget {
               children: [
                 const Row(
                   children: [
-                    Icon(Icons.info),
+                    Icon(Icons.edit_document),
                     SizedBox(width: 10),
                     Text("Product Details"),
                   ],

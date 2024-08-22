@@ -1,4 +1,8 @@
+import 'package:desh_mart/widgets/hoverEffect.dart';
+import 'package:desh_mart/widgets/myDropDownBtn.dart';
+import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class ProductMeta extends StatelessWidget {
   const ProductMeta({
@@ -7,6 +11,22 @@ class ProductMeta extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var unitType = [
+      "Length",
+      "Weight",
+      "Volume",
+      "Area",
+      "Temperature",
+      "Time",
+    ];
+    var unit = [
+      "Meter",
+      "Kilogram",
+      "Liter",
+      "Square Meter",
+      "Celsius",
+      "Second",
+    ];
     return Container(
       margin: const EdgeInsets.only(top: 10),
       padding: const EdgeInsets.all(20),
@@ -20,7 +40,7 @@ class ProductMeta extends StatelessWidget {
               children: [
                 const Row(
                   children: [
-                    Icon(Icons.info),
+                    Icon(Icons.image_rounded),
                     SizedBox(width: 10),
                     Text("Product Details"),
                   ],
@@ -33,62 +53,135 @@ class ProductMeta extends StatelessWidget {
                 Row(
                   children: [
                     Text(
-                      "Product name",
+                      "Product Image",
                       style: Theme.of(context).textTheme.bodyMedium,
                     ),
                   ],
                 ),
                 const SizedBox(height: 10),
-                const TextField(
-                  decoration: InputDecoration(
-                    hintText: "Product name",
+                InkWell(
+                  onTap: () {},
+                  child: DottedBorder(
+                      radius: Radius.circular(10),
+                      color: Theme.of(context).colorScheme.onBackground.withOpacity(0.5),
+                      strokeWidth: 1,
+                      dashPattern: [
+                        5,
+                        7
+                      ],
+                      child: HoverEffect(builder: (isHover) {
+                        return AnimatedContainer(
+                          duration: const Duration(milliseconds: 400),
+                          decoration: BoxDecoration(
+                            color: isHover ? Theme.of(context).colorScheme.background : Colors.transparent,
+                          ),
+                          height: 100,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Icon(
+                                    Icons.cloud_upload_outlined,
+                                    color: Theme.of(context).colorScheme.onPrimaryContainer,
+                                  ),
+                                  const SizedBox(height: 10),
+                                  Text(
+                                    "Click here to upload image",
+                                    style: Theme.of(context).textTheme.labelLarge,
+                                  )
+                                ],
+                              )
+                            ],
+                          ),
+                        );
+                      })),
+                ),
+                const SizedBox(height: 10),
+                DottedBorder(
+                  radius: Radius.circular(10),
+                  color: Theme.of(context).colorScheme.onBackground.withOpacity(0.5),
+                  strokeWidth: 1,
+                  dashPattern: [
+                    5,
+                    7
+                  ],
+                  child: Container(
+                    height: 100,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          "No Image",
+                          style: Theme.of(context).textTheme.labelLarge,
+                        ),
+                      ],
+                    ),
                   ),
+                ),
+                const SizedBox(height: 20),
+                Row(
+                  children: [
+                    Text(
+                      "Stocks",
+                      style: Theme.of(context).textTheme.bodyMedium,
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 10),
+                TextFormField(
+                  keyboardType: TextInputType.number,
+                  decoration: InputDecoration(hintText: "Stock"),
+                  inputFormatters: <TextInputFormatter>[
+                    FilteringTextInputFormatter.digitsOnly
+                  ],
                 ),
                 const SizedBox(height: 10),
                 Row(
                   children: [
-                    Text(
-                      "Description",
-                      style: Theme.of(context).textTheme.bodyMedium,
+                    Expanded(
+                      child: Column(
+                        children: [
+                          Row(
+                            children: [
+                              Text(
+                                "Unit Type",
+                                style: Theme.of(context).textTheme.bodyMedium,
+                              ),
+                            ],
+                          ),
+                          const SizedBox(height: 10),
+                          SearchDropDownButton(
+                            items: unitType,
+                            selectedValue: (value) {},
+                            hintText: "Select Unit Type",
+                          )
+                        ],
+                      ),
+                    ),
+                    const SizedBox(width: 10),
+                    Expanded(
+                      child: Column(
+                        children: [
+                          Row(
+                            children: [
+                              Text(
+                                "Unit Name",
+                                style: Theme.of(context).textTheme.bodyMedium,
+                              ),
+                            ],
+                          ),
+                          const SizedBox(height: 10),
+                          SearchDropDownButton(
+                            items: unit,
+                            selectedValue: (value) {},
+                            hintText: "Select Unit",
+                          )
+                        ],
+                      ),
                     ),
                   ],
-                ),
-                const SizedBox(height: 10),
-                const TextField(
-                  maxLines: 5,
-                  decoration: InputDecoration(
-                    hintText: "Description",
-                  ),
-                ),
-                const SizedBox(height: 10),
-                Row(
-                  children: [
-                    Text(
-                      "Category",
-                      style: Theme.of(context).textTheme.bodyMedium,
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 10),
-                const TextField(
-                  decoration: InputDecoration(
-                    hintText: "Category",
-                  ),
-                ),
-                const SizedBox(height: 10),
-                Row(
-                  children: [
-                    Text(
-                      "Sub-Category",
-                      style: Theme.of(context).textTheme.bodyMedium,
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 10),
-                const TextField(
-                  decoration: InputDecoration(
-                    hintText: "Sub-Category",
-                  ),
                 )
               ],
             ),
