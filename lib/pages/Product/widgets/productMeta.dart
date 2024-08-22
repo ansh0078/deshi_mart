@@ -1,8 +1,10 @@
+import 'package:desh_mart/provider/addProductProvider.dart';
 import 'package:desh_mart/widgets/hoverEffect.dart';
 import 'package:desh_mart/widgets/myDropDownBtn.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
 
 class ProductMeta extends StatelessWidget {
   const ProductMeta({
@@ -27,6 +29,7 @@ class ProductMeta extends StatelessWidget {
       "Celsius",
       "Second",
     ];
+    final addProductProvider = Provider.of<AddProductProvider>(context);
     return Container(
       margin: const EdgeInsets.only(top: 10),
       padding: const EdgeInsets.all(20),
@@ -60,7 +63,9 @@ class ProductMeta extends StatelessWidget {
                 ),
                 const SizedBox(height: 10),
                 InkWell(
-                  onTap: () {},
+                  onTap: () {
+                    addProductProvider.pickImage();
+                  },
                   child: DottedBorder(
                       radius: Radius.circular(10),
                       color: Theme.of(context).colorScheme.onBackground.withOpacity(0.5),

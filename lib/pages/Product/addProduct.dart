@@ -13,6 +13,22 @@ class AddProduct extends StatelessWidget {
       backgroundColor: Theme.of(context).colorScheme.primaryContainer,
       appBar: AppBar(
         title: const Text('Add Product'),
+        actions: [
+          PrimaryButton(
+            name: 'Save',
+            icon: Icons.save,
+            color: Theme.of(context).colorScheme.primary,
+            onTap: () {},
+          ),
+          const SizedBox(width: 10),
+          PrimaryButton(
+            name: 'Close',
+            icon: Icons.close,
+            color: Colors.red,
+            onTap: () {},
+          ),
+          const SizedBox(width: 10),
+        ],
       ),
       body: Padding(
         padding: const EdgeInsets.all(10),
@@ -51,11 +67,19 @@ class AddProduct extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   PrimaryButton(
-                    name: 'Add Product',
-                    icon: Icons.add,
+                    name: 'Save',
+                    icon: Icons.save,
                     color: Theme.of(context).colorScheme.primary,
                     onTap: () {},
                   ),
+                  const SizedBox(width: 10),
+                  PrimaryButton(
+                    name: 'Close',
+                    icon: Icons.close,
+                    color: Colors.red,
+                    onTap: () {},
+                  ),
+                  const SizedBox(width: 10),
                 ],
               ),
             ],

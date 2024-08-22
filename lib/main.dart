@@ -1,14 +1,14 @@
 import 'package:desh_mart/configs/Theme.dart';
 import 'package:desh_mart/configs/pageRouter.dart';
+import 'package:desh_mart/provider/addProductProvider.dart';
 import 'package:desh_mart/provider/drawerProvider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 void main() {
   runApp(MultiProvider(providers: [
-    ChangeNotifierProvider(
-      create: (_) => DrawerProvider(),
-    )
+    ChangeNotifierProvider(create: (_) => DrawerProvider()),
+    ChangeNotifierProvider(create: (_) => AddProductProvider()),
   ], child: const MyApp()));
 }
 
