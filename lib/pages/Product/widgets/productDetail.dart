@@ -1,5 +1,7 @@
+import 'package:desh_mart/provider/addProductProvider.dart';
 import 'package:desh_mart/widgets/myDropDownBtn.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class ProductDetails extends StatelessWidget {
   const ProductDetails({
@@ -12,6 +14,7 @@ class ProductDetails extends StatelessWidget {
       "Electronics",
       "Clothes",
     ];
+    final addProductProvider = Provider.of<AddProductProvider>(context);
     return Container(
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
@@ -43,7 +46,8 @@ class ProductDetails extends StatelessWidget {
                   ],
                 ),
                 const SizedBox(height: 10),
-                const TextField(
+                TextField(
+                  controller: addProductProvider.productName,
                   decoration: InputDecoration(
                     hintText: "Product name",
                   ),
@@ -58,7 +62,8 @@ class ProductDetails extends StatelessWidget {
                   ],
                 ),
                 const SizedBox(height: 10),
-                const TextField(
+                TextField(
+                  controller: addProductProvider.description,
                   maxLines: 5,
                   decoration: InputDecoration(
                     hintText: "Description",
@@ -75,9 +80,13 @@ class ProductDetails extends StatelessWidget {
                 ),
                 const SizedBox(height: 10),
                 SearchDropDownButton(
-                  hintText: "Category",
+                  hintText: "Select Category",
                   items: category,
-                  selectedValue: (value) {},
+                  selectedValue: (category) {
+                    if (category != null) {
+                      addProductProvider.selectedCategory = category;
+                    }
+                  },
                 ),
                 const SizedBox(height: 10),
                 Row(
@@ -89,11 +98,15 @@ class ProductDetails extends StatelessWidget {
                   ],
                 ),
                 const SizedBox(height: 10),
-                const TextField(
-                  decoration: InputDecoration(
-                    hintText: "Sub-Category",
-                  ),
-                )
+                SearchDropDownButton(
+                  hintText: "Select Sub-Category",
+                  items: category,
+                  selectedValue: (subCategory) {
+                    if (subCategory != null) {
+                      addProductProvider.selectedSubCategory = subCategory;
+                    }
+                  },
+                ),
               ],
             ),
           )

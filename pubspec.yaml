@@ -25,6 +25,9 @@ dependencies:
   dotted_border: ^2.1.0
   textfield_tags: ^3.0.1
   image_picker: ^1.1.2
+  firebase_core: ^2.24.0
+  firebase_storage: ^11.1.0
+  firebase_auth: ^4.16.1
   
 dev_dependencies:
   flutter_test:

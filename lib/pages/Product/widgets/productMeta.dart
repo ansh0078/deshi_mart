@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:desh_mart/provider/addProductProvider.dart';
 import 'package:desh_mart/widgets/hoverEffect.dart';
 import 'package:desh_mart/widgets/myDropDownBtn.dart';
@@ -114,15 +116,60 @@ class ProductMeta extends StatelessWidget {
                   ],
                   child: Container(
                     height: 100,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          "No Image",
-                          style: Theme.of(context).textTheme.labelLarge,
-                        ),
-                      ],
-                    ),
+                    child: Consumer<AddProductProvider>(builder: (context, value, child) {
+                      return value.images.isEmpty
+                          ? Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  "No Image",
+                                  style: Theme.of(context).textTheme.labelLarge,
+                                ),
+                              ],
+                            )
+                          : Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              children: value.images.map((e) {
+                                return HoverEffect(builder: (isHover) {
+                                  return Stack(
+                                    children: [
+                                      Container(
+                                        height: 90,
+                                        width: 90,
+                                        decoration: BoxDecoration(
+                                          color: Theme.of(context).colorScheme.primary.withOpacity(0.5),
+                                        ),
+                                        child: Image.file(File(e)),
+                                      ),
+                                      Positioned(
+                                        top: 0,
+                                        right: 0,
+                                        child: isHover
+                                            ? InkWell(
+                                                onTap: () {
+                                                  value.removeImage(e);
+                                                },
+                                                child: Container(
+                                                  padding: EdgeInsets.all(5),
+                                                  decoration: BoxDecoration(
+                                                    borderRadius: BorderRadius.circular(100),
+                                                    color: Colors.white.withOpacity(0.5),
+                                                  ),
+                                                  child: Icon(
+                                                    Icons.close,
+                                                    color: Colors.red,
+                                                    size: 10,
+                                                  ),
+                                                ),
+                                              )
+                                            : Container(),
+                                      )
+                                    ],
+                                  );
+                                });
+                              }).toList(),
+                            );
+                    }),
                   ),
                 ),
                 const SizedBox(height: 20),
@@ -136,6 +183,7 @@ class ProductMeta extends StatelessWidget {
                 ),
                 const SizedBox(height: 10),
                 TextFormField(
+                  controller: addProductProvider.stock,
                   keyboardType: TextInputType.number,
                   decoration: InputDecoration(hintText: "Stock"),
                   inputFormatters: <TextInputFormatter>[
@@ -159,7 +207,11 @@ class ProductMeta extends StatelessWidget {
                           const SizedBox(height: 10),
                           SearchDropDownButton(
                             items: unitType,
-                            selectedValue: (value) {},
+                            selectedValue: (unitType) {
+                              if (unitType != null) {
+                                addProductProvider.selectedUnitType = unitType;
+                              }
+                            },
                             hintText: "Select Unit Type",
                           )
                         ],
@@ -180,7 +232,11 @@ class ProductMeta extends StatelessWidget {
                           const SizedBox(height: 10),
                           SearchDropDownButton(
                             items: unit,
-                            selectedValue: (value) {},
+                            selectedValue: (unit) {
+                              if (unit != null) {
+                                addProductProvider.selectedUnit = unit;
+                              }
+                            },
                             hintText: "Select Unit",
                           )
                         ],

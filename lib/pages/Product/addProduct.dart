@@ -1,14 +1,17 @@
 import 'package:desh_mart/pages/Product/widgets/productAmount.dart';
 import 'package:desh_mart/pages/Product/widgets/productDetail.dart';
 import 'package:desh_mart/pages/Product/widgets/productMeta.dart';
+import 'package:desh_mart/provider/addProductProvider.dart';
 import 'package:desh_mart/widgets/primaryBtn.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class AddProduct extends StatelessWidget {
   const AddProduct({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final addProductProvider = Provider.of<AddProductProvider>(context);
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.primaryContainer,
       appBar: AppBar(
@@ -18,7 +21,9 @@ class AddProduct extends StatelessWidget {
             name: 'Save',
             icon: Icons.save,
             color: Theme.of(context).colorScheme.primary,
-            onTap: () {},
+            onTap: () {
+              addProductProvider.printProduct();
+            },
           ),
           const SizedBox(width: 10),
           PrimaryButton(
