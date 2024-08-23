@@ -139,7 +139,7 @@ class ProductMeta extends StatelessWidget {
                                         decoration: BoxDecoration(
                                           color: Theme.of(context).colorScheme.primary.withOpacity(0.5),
                                         ),
-                                        child: Image.file(File(e)),
+                                        child: Image.memory(e),
                                       ),
                                       Positioned(
                                         top: 0,

@@ -1,10 +1,15 @@
+import 'dart:typed_data';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:uuid/uuid.dart';
 
 class AddProductProvider extends ChangeNotifier {
   final ImagePicker picker = ImagePicker();
+  final db = FirebaseStorage.instance;
+  final uuid = Uuid();
 
-  List<String> images = [];
+  List<Uint8List> images = [];
   TextEditingController productName = TextEditingController();
   TextEditingController description = TextEditingController();
   TextEditingController purchasePrice = TextEditingController();
@@ -30,17 +35,35 @@ class AddProductProvider extends ChangeNotifier {
     print("Selected Sub Category: $selectedSubCategory");
     print("Selected Unit Type: $selectedUnitType");
     print("Selected Unit: $selectedUnit");
+    uploadImages(images, "product");
   }
 
-  void addImage(String url) {
+  void uploadImages(List<Uint8List> images, String folderName) async {
+    List<String> imageUrls = [];
+    for (var image in images) {
+      var imageId = "${uuid.v4()}.jpg";
+      var imageRef = db.ref(folderName);
+      try {
+        await imageRef.child(imageId).putData(image);
+        String downloadUrl = await imageRef.child(imageId).getDownloadURL();
+        imageUrls.add(downloadUrl);
+        print("Image Uploaded successfully: $downloadUrl");
+      } catch (e) {
+        print("Failed to upload image: $e");
+      }
+    }
+    print("All Image URLs: $imageUrls");
+  }
+
+  void addImage(Uint8List imageData) {
     if (images.length < 6) {
-      images.add(url);
+      images.add(imageData);
       notifyListeners();
     }
   }
 
-  void removeImage(String url) {
-    images.remove(url);
+  void removeImage(Uint8List imageData) {
+    images.remove(imageData);
     notifyListeners();
   }
 
@@ -48,7 +71,8 @@ class AddProductProvider extends ChangeNotifier {
     if (images.length < 6) {
       var response = await picker.pickImage(source: ImageSource.gallery);
       if (response != null) {
-        addImage(response.path);
+        var imageData = await response.readAsBytes();
+        addImage(imageData);
       }
     }
   }
