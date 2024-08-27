@@ -17,12 +17,18 @@ class AddProduct extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Add Product'),
         actions: [
-          PrimaryButton(
-            name: 'Save',
-            icon: Icons.save,
-            color: Theme.of(context).colorScheme.primary,
-            onTap: () {
-              addProductProvider.printProduct();
+          Consumer<AddProductProvider>(
+            builder: (context, value, child) {
+              return value.isLoading
+                  ? const CircularProgressIndicator()
+                  : PrimaryButton(
+                      name: 'Save',
+                      icon: Icons.save,
+                      color: Theme.of(context).colorScheme.primary,
+                      onTap: () {
+                        addProductProvider.addProduct();
+                      },
+                    );
             },
           ),
           const SizedBox(width: 10),
@@ -71,11 +77,19 @@ class AddProduct extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  PrimaryButton(
-                    name: 'Save',
-                    icon: Icons.save,
-                    color: Theme.of(context).colorScheme.primary,
-                    onTap: () {},
+                  Consumer<AddProductProvider>(
+                    builder: (context, value, child) {
+                      return value.isLoading
+                          ? const CircularProgressIndicator()
+                          : PrimaryButton(
+                              name: 'Save',
+                              icon: Icons.save,
+                              color: Theme.of(context).colorScheme.primary,
+                              onTap: () {
+                                addProductProvider.addProduct();
+                              },
+                            );
+                    },
                   ),
                   const SizedBox(width: 10),
                   PrimaryButton(

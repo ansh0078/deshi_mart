@@ -47,7 +47,7 @@ class ProductDetails extends StatelessWidget {
                 ),
                 const SizedBox(height: 10),
                 TextField(
-                  controller: addProductProvider.productName,
+                  controller: addProductProvider.name,
                   decoration: InputDecoration(
                     hintText: "Product name",
                   ),

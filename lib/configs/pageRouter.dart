@@ -1,3 +1,4 @@
+import 'package:desh_mart/pages/Category/addCategory.dart';
 import 'package:desh_mart/pages/HomePage/HomePage.dart';
 import 'package:desh_mart/pages/Product/addProduct.dart';
 import 'package:flutter/material.dart';
@@ -15,6 +16,12 @@ final GoRouter router = GoRouter(
       path: '/addProduct',
       builder: (BuildContext context, GoRouterState state) {
         return const AddProduct();
+      },
+    ),
+    GoRoute(
+      path: '/addCategory',
+      builder: (BuildContext context, GoRouterState state) {
+        return const AddCategory();
       },
     ),
   ],
