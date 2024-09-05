@@ -21,7 +21,7 @@ class CategoryPage extends StatelessWidget {
         Row(
           children: [
             Container(
-              width: 7,
+              width: 5,
               height: 30,
               color: Theme.of(context).colorScheme.primary,
             ),
@@ -42,14 +42,14 @@ class CategoryPage extends StatelessWidget {
                 categoryProvider.getAllCatgories();
               },
             ),
-            SizedBox(width: 10),
+            const SizedBox(width: 10),
             PrimaryButton(
               name: "Export",
               icon: Icons.import_export_sharp,
               onTap: () {},
               color: Colors.deepPurple,
             ),
-            SizedBox(width: 10),
+            const SizedBox(width: 10),
             PrimaryButton(
               name: "Add New",
               icon: Icons.add,
@@ -58,12 +58,12 @@ class CategoryPage extends StatelessWidget {
               },
               color: Theme.of(context).colorScheme.primary,
             ),
-            SizedBox(width: 10),
+            const SizedBox(width: 10),
           ],
         ),
-        SizedBox(height: 20),
+        const SizedBox(height: 20),
         Consumer<CategoryProvider>(builder: (context, value, chil) {
-          return value.isLoading ? SizedBox() : CategoryDataTable();
+          return value.isLoading ? const SizedBox() : const CategoryDataTable();
         })
       ],
     );

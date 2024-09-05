@@ -16,7 +16,7 @@ class CategoryDataTable extends StatelessWidget {
     final categoryProvider = Provider.of<CategoryProvider>(context);
     final categoryDataSource = CategoryDataSource(categoryProvider.categories);
     return Container(
-      height: MediaQuery.of(context).size.height / 1.3,
+      height: MediaQuery.of(context).size.height / 1.55,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
         color: Theme.of(context).colorScheme.primaryContainer,
@@ -32,7 +32,7 @@ class CategoryDataTable extends StatelessWidget {
         columns: [
           GridColumn(
               allowFiltering: false,
-              width: 200,
+              width: 100,
               columnName: "id",
               label: Container(
                 child: Center(child: Text("ID")),
