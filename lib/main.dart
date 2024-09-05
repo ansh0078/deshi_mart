@@ -2,6 +2,7 @@ import 'package:desh_mart/configs/Theme.dart';
 import 'package:desh_mart/configs/pageRouter.dart';
 import 'package:desh_mart/firebase_options.dart';
 import 'package:desh_mart/provider/addProductProvider.dart';
+import 'package:desh_mart/provider/categoryProvider.dart';
 import 'package:desh_mart/provider/drawerProvider.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -17,6 +18,7 @@ void main() async {
       providers: [
         ChangeNotifierProvider(create: (_) => DrawerProvider()),
         ChangeNotifierProvider(create: (_) => AddProductProvider()),
+        ChangeNotifierProvider(create: (_) => CategoryProvider()),
       ],
       child: const MyApp(),
     ),
@@ -25,7 +27,7 @@ void main() async {
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-
+ 
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(

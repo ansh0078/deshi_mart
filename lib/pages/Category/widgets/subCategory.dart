@@ -23,7 +23,7 @@ class _SubCategorySearchDropDownButtonState
     extends State<SubCategorySearchDropDownButton> {
   SubCategory? selectedValue;
   final TextEditingController textEditingController = TextEditingController();
-  final FocusNode textFocusNode = FocusNode(); // Add this line
+  final FocusNode textFocusNode = FocusNode();
 
   @override
   void initState() {
@@ -58,7 +58,7 @@ class _SubCategorySearchDropDownButtonState
           ),
           items: widget.items
               .map((category) => DropdownMenuItem(
-                    value: category!,
+                    value: category,
                     child: Text(
                       category.title!,
                       style: TextStyle(

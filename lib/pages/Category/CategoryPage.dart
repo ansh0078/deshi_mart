@@ -17,12 +17,12 @@ class CategoryPage extends StatelessWidget {
         Consumer<CategoryProvider>(builder: (context, value, chil) {
           return value.isLoading ? LinearProgressIndicator() : SizedBox();
         }),
-        SizedBox(height: 10),
+        SizedBox(height: 5),
         Row(
           children: [
             Container(
               width: 7,
-              height: 40,
+              height: 30,
               color: Theme.of(context).colorScheme.primary,
             ),
             SizedBox(width: 10),
@@ -32,7 +32,6 @@ class CategoryPage extends StatelessWidget {
             ),
           ],
         ),
-        SizedBox(height: 30),
         Row(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [

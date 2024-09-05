@@ -1,5 +1,3 @@
-
-
 import 'package:desh_mart/configs/AssetsPath.dart';
 import 'package:desh_mart/configs/Colors.dart';
 import 'package:desh_mart/models/category.dart';
@@ -18,53 +16,61 @@ class CategoryDataTable extends StatelessWidget {
     final categoryProvider = Provider.of<CategoryProvider>(context);
     final categoryDataSource = CategoryDataSource(categoryProvider.categories);
     return Container(
-      height: 600,
+      height: MediaQuery.of(context).size.height / 1.3,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
         color: Theme.of(context).colorScheme.primaryContainer,
       ),
       padding: EdgeInsets.all(10),
-      child: SfDataGrid(rowHeight: 100, source: categoryDataSource, allowFiltering: true, allowSorting: true, headerGridLinesVisibility: GridLinesVisibility.none, gridLinesVisibility: GridLinesVisibility.none, columns: [
-        GridColumn(
-            allowFiltering: false,
-            width: 200,
-            columnName: "id",
-            label: Container(
-              child: Center(child: Text("ID")),
-            )),
-        GridColumn(
-            allowFiltering: false,
-            allowSorting: true,
-            width: 200,
-            columnName: "image",
-            label: Container(
-              child: Center(child: Text("Image")),
-            )),
-        GridColumn(
-            allowFiltering: false,
-            allowSorting: true,
-            width: 300,
-            columnName: "title",
-            label: Container(
-              child: Center(child: Text("Category Name")),
-            )),
-        GridColumn(
-            allowFiltering: false,
-            allowSorting: true,
-            width: 400,
-            columnName: "subCategory",
-            label: Container(
-              child: Center(child: Text("Sub Category")),
-            )),
-        GridColumn(
-            width: 200,
-            allowSorting: false,
-            allowFiltering: false,
-            columnName: "action",
-            label: Container(
-              child: Center(child: Text("Action")),
-            )),
-      ]),
+      child: SfDataGrid(
+        rowHeight: 100,
+        source: categoryDataSource,
+        allowFiltering: true,
+        allowSorting: true,
+        headerGridLinesVisibility: GridLinesVisibility.none,
+        gridLinesVisibility: GridLinesVisibility.none,
+        columns: [
+          GridColumn(
+              allowFiltering: false,
+              width: 200,
+              columnName: "id",
+              label: Container(
+                child: Center(child: Text("ID")),
+              )),
+          GridColumn(
+              allowFiltering: false,
+              allowSorting: true,
+              width: 200,
+              columnName: "image",
+              label: Container(
+                child: Center(child: Text("Image")),
+              )),
+          GridColumn(
+              allowFiltering: false,
+              allowSorting: true,
+              width: 300,
+              columnName: "title",
+              label: Container(
+                child: Center(child: Text("Category Name")),
+              )),
+          GridColumn(
+              allowFiltering: false,
+              allowSorting: true,
+              width: 400,
+              columnName: "subCategory",
+              label: Container(
+                child: Center(child: Text("Sub Category")),
+              )),
+          GridColumn(
+              width: 200,
+              allowSorting: false,
+              allowFiltering: false,
+              columnName: "action",
+              label: Container(
+                child: Center(child: Text("Action")),
+              )),
+        ],
+      ),
     );
   }
 }
