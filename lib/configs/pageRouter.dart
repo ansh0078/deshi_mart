@@ -1,3 +1,4 @@
+import 'package:desh_mart/pages/Auth/AuthPage.dart';
 import 'package:desh_mart/pages/Category/addCategory.dart';
 import 'package:desh_mart/pages/HomePage/HomePage.dart';
 import 'package:desh_mart/pages/Product/addProduct.dart';
@@ -28,7 +29,7 @@ final GoRouter router = GoRouter(
     GoRoute(
       path: '/auth',
       builder: (BuildContext context, GoRouterState state) {
-        return const AddCategory();
+        return const AuthPage();
       },
     ),
     GoRoute(
