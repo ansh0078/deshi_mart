@@ -62,7 +62,7 @@ class CategoryPage extends StatelessWidget {
           ],
         ),
         const SizedBox(height: 20),
-        Consumer<CategoryProvider>(builder: (context, value, chil) {
+        Consumer<CategoryProvider>(builder: (context, value, child) {
           return value.isLoading ? const SizedBox() : const CategoryDataTable();
         })
       ],

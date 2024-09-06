@@ -10,8 +10,8 @@ class SettingPage extends StatelessWidget {
         Row(
           children: [
             Container(
-              width: 7,
-              height: 40,
+              width: 5,
+              height: 30,
               color: Theme.of(context).colorScheme.primary,
             ),
             const SizedBox(width: 10),

@@ -1,4 +1,6 @@
 import 'package:desh_mart/models/Product.dart';
+import 'package:desh_mart/models/category.dart';
+import 'package:desh_mart/models/subCategory.dart';
 
 var products = [
   Product(
@@ -270,4 +272,20 @@ var products = [
     unitPrice: 20000,
     updatedAt: "",
   ),
+];
+
+var categoryData = [
+  Category(
+    id: "1",
+    title: "Electronic",
+    value: "electronic",
+    coverUrl: "https://www.google.com/imgres?q=electronics%20image&imgurl=https%3A%2F%2Ft3.ftcdn.net%2Fjpg%2F02%2F57%2F16%2F84%2F360_F_257168460_AwhicdEIavp7bdCbHXyTaBTHnBoBcZad.jpg&imgrefurl=https%3A%2F%2Fstock.adobe.com%2Fsearch%3Fk%3Delectronics&docid=YDbfXw_9gqczMM&tbnid=Mee_6W7NUnWztM&vet=12ahUKEwiOuLmYv66IAxUKna8BHQIoMsUQM3oECD0QAA..i&w=540&h=360&hcb=2&ved=2ahUKEwiOuLmYv66IAxUKna8BHQIoMsUQM3oECD0QAA",
+    subCategories: [
+      SubCategory(
+        id: "1.1",
+        title: "Mobile Phone",
+        value: "mobilephone"
+      )
+    ]
+  )
 ];
