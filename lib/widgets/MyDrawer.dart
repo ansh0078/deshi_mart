@@ -54,20 +54,12 @@ class MyDrawer extends StatelessWidget {
                 isSelected: drawerProvider.selectedPageIndex == 3,
               ),
               MyDrawerMenu(
-                title: "Orders",
-                icon: IconsAssets.order,
+                title: "Settings",
+                icon: IconsAssets.setting,
                 onPress: () {
                   drawerProvider.seletedMenu(4);
                 },
                 isSelected: drawerProvider.selectedPageIndex == 4,
-              ),
-              MyDrawerMenu(
-                title: "Settings",
-                icon: IconsAssets.setting,
-                onPress: () {
-                  drawerProvider.seletedMenu(5);
-                },
-                isSelected: drawerProvider.selectedPageIndex == 5,
               ),
             ],
           ),

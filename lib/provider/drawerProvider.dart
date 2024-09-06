@@ -1,7 +1,6 @@
 import 'package:desh_mart/pages/Category/CategoryPage.dart';
 import 'package:desh_mart/pages/Coupon/CouponPage.dart';
 import 'package:desh_mart/pages/DashBoard/DashBoard.dart';
-import 'package:desh_mart/pages/Order/OrderPage.dart';
 import 'package:desh_mart/pages/Product/ProductPage.dart';
 import 'package:desh_mart/pages/Settings/SettingPage.dart';
 import 'package:flutter/material.dart';
@@ -13,7 +12,6 @@ class DrawerProvider extends ChangeNotifier {
     ProductPage(),
     CategoryPage(),
     CouponPage(),
-    OrderPage(),
     SettingPage(),
   ];
   void seletedMenu(int index) {
