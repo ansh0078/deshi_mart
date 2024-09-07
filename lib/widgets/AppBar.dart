@@ -1,7 +1,10 @@
+import 'package:desh_mart/configs/AssetsPath.dart';
 import 'package:desh_mart/configs/customNotification.dart';
 import 'package:desh_mart/provider/authProvider.dart';
+import 'package:desh_mart/provider/themeProvider.dart';
 import 'package:desh_mart/widgets/ResponsiveLayout.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 
 class MyAppBar extends StatelessWidget {
@@ -48,12 +51,19 @@ class MyAppBar extends StatelessWidget {
             ),
           ),
           const SizedBox(width: 20),
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(
-              Icons.dark_mode,
-            ),
-          ),
+          Consumer<ThemeProvider>(builder: (context, value, _) {
+            return value.themeMode == ThemeMode.light
+                ? SvgPicture.asset(
+                    IconsAssets.sun,
+                    width: 25,
+                    color: Theme.of(context).colorScheme.onPrimaryContainer,
+                  )
+                : SvgPicture.asset(
+                    IconsAssets.moon,
+                    width: 25,
+                    color: Theme.of(context).colorScheme.onSurface,
+                  );
+          }),
           const SizedBox(width: 20),
           PopupMenuButton<String>(
             onSelected: (value) {
