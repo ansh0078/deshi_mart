@@ -1,14 +1,16 @@
+import 'package:desh_mart/configs/customNotification.dart';
+import 'package:desh_mart/provider/authProvider.dart';
 import 'package:desh_mart/widgets/ResponsiveLayout.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class MyAppBar extends StatelessWidget {
-  const MyAppBar({
-    super.key,
-  });
+  const MyAppBar({super.key});
 
   @override
   Widget build(BuildContext context) {
     final isDesktop = Responsive.isDesktop(context);
+    final authProvider = Provider.of<Authprovider>(context);
     return Container(
       height: 70,
       decoration: BoxDecoration(
@@ -53,31 +55,52 @@ class MyAppBar extends StatelessWidget {
             ),
           ),
           const SizedBox(width: 20),
-          Container(
-            padding: const EdgeInsets.all(7),
-            decoration: BoxDecoration(
-              color: Theme.of(context).colorScheme.primary.withOpacity(0.2),
-              borderRadius: BorderRadius.circular(10),
-            ),
-            child: Row(
-              children: [
-                CircleAvatar(
-                  backgroundColor: Theme.of(context).colorScheme.primary,
-                  child: Text(
-                    "A",
-                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                          color: Theme.of(context).colorScheme.onBackground,
-                        ),
+          PopupMenuButton<String>(
+            onSelected: (value) {
+              if (value == "profile") {
+                successMessage(context, "Go to profile page");
+              } else if (value == 'logout') {
+                authProvider.logout(context);
+              }
+            },
+            tooltip: "",
+            position: PopupMenuPosition.under,
+            itemBuilder: (BuildContext context) => [
+              const PopupMenuItem<String>(
+                value: 'profile',
+                child: Text('Profile Setiing'),
+              ),
+              PopupMenuItem(
+                value: 'logout',
+                child: Text('Logout'),
+              )
+            ],
+            child: Container(
+              padding: const EdgeInsets.all(7),
+              decoration: BoxDecoration(
+                color: Theme.of(context).colorScheme.primary.withOpacity(0.2),
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: Row(
+                children: [
+                  CircleAvatar(
+                    backgroundColor: Theme.of(context).colorScheme.primary,
+                    child: Text(
+                      "A",
+                      style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                            color: Theme.of(context).colorScheme.onBackground,
+                          ),
+                    ),
                   ),
-                ),
-                const SizedBox(width: 10),
-                Text(
-                  "Ansh Raj",
-                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                        color: Theme.of(context).colorScheme.onPrimaryContainer,
-                      ),
-                )
-              ],
+                  const SizedBox(width: 10),
+                  Text(
+                    "Ansh Raj",
+                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                          color: Theme.of(context).colorScheme.onPrimaryContainer,
+                        ),
+                  )
+                ],
+              ),
             ),
           )
         ],

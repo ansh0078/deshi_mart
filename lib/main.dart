@@ -2,6 +2,7 @@ import 'package:desh_mart/configs/Theme.dart';
 import 'package:desh_mart/configs/pageRouter.dart';
 import 'package:desh_mart/firebase_options.dart';
 import 'package:desh_mart/provider/addProductProvider.dart';
+import 'package:desh_mart/provider/authProvider.dart';
 import 'package:desh_mart/provider/categoryProvider.dart';
 import 'package:desh_mart/provider/drawerProvider.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -19,6 +20,7 @@ void main() async {
         ChangeNotifierProvider(create: (_) => DrawerProvider()),
         ChangeNotifierProvider(create: (_) => AddProductProvider()),
         ChangeNotifierProvider(create: (_) => CategoryProvider()),
+        ChangeNotifierProvider(create: (_) => Authprovider()),
       ],
       child: const MyApp(),
     ),
